@@ -76,7 +76,7 @@ main { padding: 40px 0 64px; }
 .intro p { margin: 0 0 1.25em; }
 .intro p:last-of-type { margin-bottom: 0; }
 
-.pronounce { color: var(--muted); }
+.pronounce { color: #6B7178; font-size: 14.5px; }
 
 .links {
   margin-top: 24px;
