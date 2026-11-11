@@ -150,6 +150,17 @@ h2 {
   color: var(--muted);
 }
 
+/* CV */
+
+.cv-frame {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 220px);
+  min-height: 560px;
+  margin-top: 20px;
+  border: 1px solid var(--rule);
+}
+
 @media (max-width: 600px) {
   body { font-size: 16px; }
   .site-header { padding-top: 24px; }
