@@ -1,11 +1,37 @@
 :root {
+  color-scheme: light;
   --ink: #1C1F23;
   --muted: #5A6069;
+  --faint: #6B7178;
   --accent: #1E5E58;
   --rule: #E3E5E8;
   --bg: #FFFFFF;
   --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+/* Dark mode: follows the system setting unless the visitor picks one */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ink: #F5F5F5;
+    --muted: #D0D0D0;
+    --faint: #BEBEBE;
+    --accent: #9FDCD2;
+    --rule: #5E5E5E;
+    --bg: #474747;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #F5F5F5;
+  --muted: #D0D0D0;
+  --faint: #BEBEBE;
+  --accent: #9FDCD2;
+  --rule: #5E5E5E;
+  --bg: #474747;
 }
 
 * { box-sizing: border-box; }
@@ -50,9 +76,28 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
 }
 .site-name:hover { text-decoration: none; }
 
-.site-nav { display: flex; gap: 22px; font-size: 15px; }
+.site-nav { display: flex; align-items: center; gap: 22px; font-size: 15px; }
 .site-nav a { color: var(--muted); }
 .site-nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+.theme-toggle {
+  display: inline-flex;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: 2px;
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--ink); }
+.theme-toggle svg { width: 16px; height: 16px; }
+.theme-toggle .icon-sun { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+}
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
 main { padding: 40px 0 64px; }
 
@@ -76,7 +121,7 @@ main { padding: 40px 0 64px; }
 .intro p { margin: 0 0 1.25em; }
 .intro p:last-of-type { margin-bottom: 0; }
 
-.pronounce { color: #6B7178; font-size: 14.5px; }
+.pronounce { color: var(--faint); font-size: 14.5px; }
 
 .links {
   margin-top: 24px;
